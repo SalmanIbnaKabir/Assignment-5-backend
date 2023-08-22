@@ -23,10 +23,16 @@ const updateBook = async (id, payload) => {
 
   return result;
 };
+const deleteBook = async (id) => {
+  const result = await Book.findByIdAndDelete({ _id: id });
+
+  return result;
+};
 
 export const BookService = {
   createBook,
   getAllBooks,
   getSingleBook,
+  deleteBook,
   updateBook,
 };
