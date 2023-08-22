@@ -1,8 +1,10 @@
+import { UserService } from "./user.service.js";
+
 const signup = async (req, res) => {
   try {
     const { ...signupData } = req.body;
 
-    const result = await BookService.createBook(signupData);
+    const result = await UserService.signup(signupData);
     if (!result) {
       return res.status(404).json({
         success: false,

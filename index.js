@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import { BookRoutes } from "./src/module/book/book.route.js";
+import { UserRoutes } from "./src/module/user/user.route.js";
 
 const PORT = 5000 || process.env.PORT;
 dotenv.config();
@@ -13,7 +14,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-export const bcrypt_salt_Rounds = process.env.BCRYPT_SALT_ROUNDS;
 // database configuration
 
 async function bootstrap() {
@@ -35,6 +35,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/book", BookRoutes);
+app.use("/api/v1/user", UserRoutes);
 
 // handle not found routes
 app.use((req, res) => {

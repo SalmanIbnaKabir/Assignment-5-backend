@@ -5,3 +5,7 @@ const signup = async (payload) => {
 
   return result;
 };
+
+export const UserService = {
+  signup,
+};
