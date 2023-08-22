@@ -6,6 +6,13 @@ const createBook = async (payload) => {
   return result;
 };
 
+const getAllBooks = async () => {
+  const result = await Book.find();
+
+  return result;
+};
+
 export const BookService = {
   createBook,
+  getAllBooks,
 };
