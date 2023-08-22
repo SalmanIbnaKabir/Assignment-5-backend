@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+export const bcrypt_salt_Rounds = process.env.BCRYPT_SALT_ROUNDS;
 // database configuration
 
 async function bootstrap() {
