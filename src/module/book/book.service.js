@@ -16,9 +16,17 @@ const getSingleBook = async (id) => {
 
   return result;
 };
+const updateBook = async (id, payload) => {
+  const result = await Book.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+
+  return result;
+};
 
 export const BookService = {
   createBook,
   getAllBooks,
   getSingleBook,
+  updateBook,
 };
