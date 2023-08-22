@@ -20,12 +20,12 @@ const bookSchema = mongoose.Schema(
     },
     // owner:{
     //   type: Schema.Types.ObjectId,
-    //   ref: "user",
+    //   ref: "User",
     //   required: true,
     // }
   },
   {
-    timeStamp: true,
+    timestamps: true,
   }
 );
 

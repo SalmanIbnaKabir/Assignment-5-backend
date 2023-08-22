@@ -11,8 +11,14 @@ const getAllBooks = async () => {
 
   return result;
 };
+const getSingleBook = async (id) => {
+  const result = await Book.findById(id);
+
+  return result;
+};
 
 export const BookService = {
   createBook,
   getAllBooks,
+  getSingleBook,
 };
