@@ -2,7 +2,8 @@ import { UserService } from "./user.service.js";
 
 const signup = async (req, res) => {
   try {
-    const { ...signupData } = req.body;
+    const signupData = req.body;
+    // console.log(signupData);
 
     const result = await UserService.signup(signupData);
     if (!result) {
@@ -11,11 +12,11 @@ const signup = async (req, res) => {
         message: "signup not successful",
       });
     }
-
+    const { password, ...others } = result.toObject();
     res.status(201).json({
       success: true,
       message: "signup successfully",
-      data: result,
+      data: others,
     });
   } catch (error) {
     res.status(500).json({

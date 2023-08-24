@@ -18,11 +18,11 @@ const bookSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    // owner:{
-    //   type: Schema.Types.ObjectId,
-    //   ref: "User",
-    //   required: true,
-    // }
+    owner: {
+      type: String,
+      required: true,
+    },
+    reviews: [{ type: String }],
   },
   {
     timestamps: true,

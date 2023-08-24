@@ -78,6 +78,9 @@ const updateBook = async (req, res) => {
   try {
     const id = req.params.id;
     const updateData = req.body;
+
+    console.log(id), console.log(updateBook);
+
     const result = await BookService.updateBook(id, updateData);
     if (!result) {
       return res.status(404).json({
@@ -125,10 +128,68 @@ const deleteBook = async (req, res) => {
   }
 };
 
+const createComment = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const comment = req.body.comment;
+
+    // console.log(id), console.log(comment);
+
+    const result = await BookService.createComment(id, comment);
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "book not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "comment  add successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "comment not add",
+      errorMessage: error.message,
+    });
+  }
+};
+const getComment = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // console.log(id), console.log(comment);
+
+    const result = await BookService.getComment(id);
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "comment not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "comment  get successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "comment not get successfully",
+      errorMessage: error.message,
+    });
+  }
+};
+
 export const BookController = {
   createBook,
   getAllBooks,
   getSingleBook,
   updateBook,
   deleteBook,
+  createComment,
+  getComment,
 };

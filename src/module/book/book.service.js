@@ -1,6 +1,7 @@
 import { Book } from "./book.model.js";
 
 const createBook = async (payload) => {
+  // console.log(payload);
   const result = await Book.create(payload);
 
   return result;
@@ -28,6 +29,22 @@ const deleteBook = async (id) => {
 
   return result;
 };
+const createComment = async (id, payload) => {
+  const result = await Book.findOneAndUpdate(
+    { _id: id },
+    { $push: { reviews: payload } },
+    {
+      new: true,
+    }
+  );
+
+  return result;
+};
+const getComment = async (id) => {
+  const result = await Book.findOne({ _id: id }, { _id: 0, reviews: 1 });
+
+  return result;
+};
 
 export const BookService = {
   createBook,
@@ -35,4 +52,6 @@ export const BookService = {
   getSingleBook,
   deleteBook,
   updateBook,
+  createComment,
+  getComment,
 };
