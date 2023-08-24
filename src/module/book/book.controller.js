@@ -79,7 +79,7 @@ const updateBook = async (req, res) => {
     const id = req.params.id;
     const updateData = req.body;
 
-    console.log(id), console.log(updateBook);
+    // console.log(id), console.log(updateBook);
 
     const result = await BookService.updateBook(id, updateData);
     if (!result) {
